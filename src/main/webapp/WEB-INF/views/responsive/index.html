@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Inicio de session y/o registro</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="stylesheet" href="bootstrap-3.3.5-dist/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap-3.3.5-dist/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="bootstrap-3.3.5-dist/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+   
+
+<!--  
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+-->
+
+  <!-- 
+    <link rel="stylesheet" href="bootstrap-3.3.5-dist/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap-3.3.5-dist/bootstrap-3.3.5-dist/css/bootstrap-theme.min.css">
+  <script src="bootstrap-3.3.5-dist/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+  -->
+
+  
+  <script>
+  
+ function validarCamposCompletosIniciarSession()
+ {
+ var textUsuario=document.getElementById("usr");
+ var textPassword=document.getElementById("pwd");
+ 
+ if(textUsuario.value.length==0 && textPassword.value.length==0){
+		alert("Falta agregar el usuario y la contraseña");
+		return false;
+ }
+ 
+  if(textUsuario.value.length==0 && !textPassword.value.length==0){
+		alert("Falta agregar el usuario");
+		return false;
+ }
+   if(!textUsuario.value.length==0 && textPassword.value.length==0){
+		alert("Falta agregar la contraseña");
+		return false;
+ }
+ return true;
+ }
+  
+ <!-- para ver que condiciones seleccione, no se usa-->
+	function verCondiciones(){
+	var condiciones= document.getElementsByName('condicion');
+	
+	for(i=0;i<condiciones.length;i++){
+		if(condiciones[i].checked){
+		alert(condiciones[i].value);
+		}
+	}	
+	}
+	
+	
+	
+	function createSelectOption() {    
+    var select_option = '<select class="form-control" name="edad">';
+    for(i = 18; i <= 80; i++) { 
+       select_option += '<option value=' + i + '>' + i + '</option>';
+    }
+    select_option += '</select>';
+	document.getElementById('xx').innerHTML = select_option;
+	
+	/*var a=document.getElementById('xx')
+	var ultimoHijo=a.firstChild;
+	var listaNodosHijos=a.childNodes;
+	alert(listaNodosHijos.length);
+	var elementP=document.createElement("p");
+	var texto1 = document.createTextNode(34);
+	//elementP.appendChild(texto1);
+	//a.replaceChild(elementP,ultimoHijo);
+
+	a.replaceChild(elementP,listaNodosHijos[2]);*/
+	}
+  </script>
+  
+  
+  </head>
+<body onload="createSelectOption();" >
+
+
+
+
+<div class="container" style="">
+  <div class="jumbotron ">
+    <h1>Bienvenido capo!!!</h1>
+    <p>TP 2015 DDS</p> 
+  </div>
+
+
+	<div class="row">
+		<div class="col-sm-12">
+		<h3>Entrega de febrero</h3>
+		<p>Estamos haciendo lo que podemos para terminar el tp de diseño.</p>
+		<p>
+		"La esperanza es el peor de los males, pues prolonga el tormento del hombre."</p>
+		</div>
+		
+			<div class="col-sm-12">
+		
+				<h3>Inicio de session</h3>
+				<p>En el caso que este registrado ingrese el usuario y la contraseña.</p>
+		
+				<form role="form" action="bienvenido" method="POST" onsubmit="return validarCamposCompletosIniciarSession();">
+					<div class="form-group">
+						<label for="usr">Name:</label>
+						<input type="text" class="form-control" id="usr" name="usuario" placeholder="Enter user" >
+					</div>
+					<div class="form-group">
+						<label for="pwd">Password:</label>
+						<input type="password" class="form-control" id="pwd"  name="password" placeholder="Enter password">
+					</div> 
+					<div class="checkbox">
+						<label><input type="checkbox"> Remember me</label>
+					</div>
+					<input type="submit" class="btn btn-info" value="Iniciar sesion" >
+				</form>
+			</div>
+
+
+
+	
+			<div class="col-sm-12" >
+ 
+				<h3>Registro de usuario</h3>
+				<p>Registrese si todavia no fue registrado para luego iniciar sesion.</p>
+ 
+ 
+				<form role="form" action="" method="POST">
+		
+					<div class="form-group" >
+						<label for="email">Usuario:</label>
+						<input type="email" class="form-control" id="email" placeholder="Ingrese el usuario">
+					</div>
+		
+					<div class="form-group">
+						<label for="pwd">Password:</label>
+						<input type="password" class="form-control" id="pwd" placeholder="Ingrese la contraseña">
+					</div>
+					
+					<div class="form-group">
+						<label for="nom">Nombre:</label>
+						<input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre">
+					</div>
+					
+					<div class="form-group">
+						<label for="alt">Altura:</label>
+						<input type="text" class="form-control" id="altura" placeholder="Ingrese la altura"  size="1">
+					</div>
+					
+					<div class="form-group" >
+						<label for="edad">Edad:</label>
+							<select class="form-control" id="xx">
+							</select>
+						
+					</div>
+										
+					<div class="form-group">
+						<label for="cond">Condiciones:</label>
+						    <label class="checkbox-inline">
+							<input type="checkbox"  name="condicion" value="celiaco">Celiaco
+							</label>
+							<label class="checkbox-inline">
+							<input type="checkbox"  name="condicion" value="hipertenso">Hipertenso
+							</label>
+							<label class="checkbox-inline">
+							<input type="checkbox" name="condicion" value="diabetico">Diabetico
+							</label>
+					</div>
+					
+					<input type="submit" class="btn btn-info" value="Registrarme"></button>	
+				</form>
+			</div> 
+	</div>
+
+		
+</div>
+</br>
+
+
+</body>
+</html>
